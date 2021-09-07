@@ -1,0 +1,17 @@
+ /* .grid-item {
+    if not working try doing grid box here
+ } */
+
+ body { 
+    background-color: grey;
+ }
+
+ #container {
+    border: 1px solid black;
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    display: grid;
+
+
+ }
