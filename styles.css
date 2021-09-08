@@ -12,6 +12,8 @@
     width: fit-content;
     margin: auto;
     display: grid;
+ }
 
-
+ #grid-size {
+    cursor: pointer;
  }
