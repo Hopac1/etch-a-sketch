@@ -12,19 +12,24 @@
     <div>
         <h1>Etch-A-Sketch</h1>
     </div>
-    <div class="options">
-        <div class="grid-size">
-            <form>
-                <label id="range-label" for="grid-size"></label>
-                <input type="range" id="range" name="grid-size" min="1" max="32" value="16">
-            </form>
+    <div class="border-container">
+        <div class="options">
+            <div class="grid-size">
+                <form>
+                    <label id="range-label" for="grid-size"></label>
+                    <input type="range" id="range" name="grid-size" min="1" max="32" value="16">
+                </form>
+            </div>
+
+            <div id="clear-screen" class="clear-screen">
+                <button>Clear</button>
+            </div>
         </div>
 
-    </div>
-    <div id="container">
+        <div id="container">
 
+        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
