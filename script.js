@@ -8,18 +8,15 @@ function makeGrid() {
     for (j = 0; j < gridSizeSlider.value; j++) {
         for (i = 0; i < gridSizeSlider.value; i++) {
             let div = document.createElement("div");
-            // div.style.height = "30px";
-            // div.style.width = "30px";
-            div.style.background = "red";
-            div.style.display = "grid";
-            // div.style.gridTemplateColumns = "repeat(size, 20px";
-            // div.style.gridTemplateRows = "repeat(size, 20px";
+            div.className = "grid-square";
 
-            document.getElementById("container").style.gridTemplateColumns = `repeat(${gridSizeSlider.value}, 10px)`;  // Swap px and .value 
-            document.getElementById("container").style.gridTemplateRows = `repeat(${gridSizeSlider.value}, 10px)`;
-            document.getElementById("container").appendChild(div);
+            container.style.gridTemplateColumns = `repeat(${gridSizeSlider.value}, 1fr)`;
+            container.style.gridTemplateRows = `repeat(${gridSizeSlider.value}, 1fr)`;
+            container.appendChild(div);
         }
     } 
+    // ".grid-square".width(650/gridSizeSlider.value)
+    // ".grid-square".height(650/gridSizeSlider.value)
 }
 
 // Remove all div squares to minimize lag when resizing the grid
