@@ -1,6 +1,8 @@
 const container = document.getElementById("container");
 const gridSizeSlider = document.getElementById("range");
 const gridSizeLabel = document.getElementById("range-label");
+const gridSquare = document.querySelector("grid-square");
+const clearScreen = document.getElementById("clear-screen");
 
 function makeGrid() {
     clearCurrentGrid()
@@ -13,10 +15,17 @@ function makeGrid() {
             container.style.gridTemplateColumns = `repeat(${gridSizeSlider.value}, 1fr)`;
             container.style.gridTemplateRows = `repeat(${gridSizeSlider.value}, 1fr)`;
             container.appendChild(div);
+
+            blackSquareOnMouseOver(div);
         }
     } 
-    // ".grid-square".width(650/gridSizeSlider.value)
-    // ".grid-square".height(650/gridSizeSlider.value)
+}
+
+// Change the current hovered square colour to black
+function blackSquareOnMouseOver(currentDiv) {
+    currentDiv.addEventListener("mouseover", () => {
+        currentDiv.style.backgroundColor = "black";
+    });
 }
 
 // Remove all div squares to minimize lag when resizing the grid
@@ -26,12 +35,17 @@ function clearCurrentGrid() {
     }
 }
 
+
 function showGridSizeValue() {
     gridSizeLabel.textContent = `${gridSizeSlider.value}`;
 }
 
 // Event Listeners
 gridSizeSlider.addEventListener("input", makeGrid);
+clearScreen.addEventListener("click", clearCurrentGrid);
+
+// gridSquare.addEventListener("mouseover", divSquareToBlack)
+
 makeGrid();
 
 // If the number the user types isn't typeof === number then show error pop up if possible.
