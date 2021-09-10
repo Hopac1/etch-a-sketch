@@ -8,12 +8,31 @@
 
  #container {
     border: 1px solid black;
-    height: fit-content;
-    width: fit-content;
+    height: 600px;
+    width: 600px;
     margin: auto;
     display: grid;
+    background-color: rgb(196, 196, 196);
  }
 
  #grid-size {
     cursor: pointer;
+ }
+
+ .grid-square {
+    /* background-color: red; */
+    display: inline-block;
+    outline: rgb(117, 117, 117) solid 1px;
+ }
+
+.grid-square:hover {
+   background-color: black;
+}
+
+ .border-container {
+    width: 700px;
+    height: 700px;
+    margin: auto;
+    background-color: coral;
+    border-radius: 10px;
  }
