@@ -4,6 +4,8 @@
 
  body { 
     background-color: grey;
+    display: grid;
+    justify-items: center;
  }
 
  #container {
@@ -35,4 +37,8 @@
     margin: auto;
     background-color: coral;
     border-radius: 10px;
+ }
+
+ .active {
+    background-color: black;
  }
