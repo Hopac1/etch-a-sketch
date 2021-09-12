@@ -1,8 +1,8 @@
 const container = document.getElementById("container");
 const gridSizeSlider = document.getElementById("range");
 const gridSizeLabel = document.getElementById("range-label");
-const gridSquare = document.querySelector("grid-square");
-const clearScreen = document.getElementById("clear-screen");
+const clearScreen = document.getElementById("clear");
+let activeClass = document.getElementsByClassName("active");
 
 function makeGrid() {
     clearCurrentGrid()
@@ -17,34 +17,43 @@ function makeGrid() {
             container.appendChild(div);
 
             blackSquareOnMouseOver(div);
+
         }
     } 
 }
 
-// Change the current hovered square colour to black
 function blackSquareOnMouseOver(currentDiv) {
     currentDiv.addEventListener("mouseover", () => {
-        currentDiv.style.backgroundColor = "black";
-    });
+        currentDiv.className = "active";
+    })
+}
+
+// Replace "active" class with "grid-square" with all elements
+function clearGrid() {
+    while (activeClass[0]) {
+        activeClass[0].classList.replace("active", "grid-square");
+    }
 }
 
 // Remove all div squares to minimize lag when resizing the grid
 function clearCurrentGrid() {
     while (container.lastChild) {
         container.removeChild(container.lastChild);
+        // makeGrid();
     }
 }
-
 
 function showGridSizeValue() {
     gridSizeLabel.textContent = `${gridSizeSlider.value}`;
 }
 
-// Event Listeners
-gridSizeSlider.addEventListener("input", makeGrid);
-clearScreen.addEventListener("click", clearCurrentGrid);
 
-// gridSquare.addEventListener("mouseover", divSquareToBlack)
+// <--Event Listeners-->
+gridSizeSlider.addEventListener("input", makeGrid);
+
+
+// Clear button
+clearScreen.addEventListener("click", clearGrid);
 
 makeGrid();
 
