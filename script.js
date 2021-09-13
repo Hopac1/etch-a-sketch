@@ -6,7 +6,7 @@ let activeClass = document.getElementsByClassName("active");
 
 function makeGrid() {
     clearCurrentGrid()
-    showGridSizeValue()
+    // showGridSizeValue()
     for (j = 0; j < gridSizeSlider.value; j++) {
         for (i = 0; i < gridSizeSlider.value; i++) {
             let div = document.createElement("div");
@@ -39,14 +39,20 @@ function clearGrid() {
 function clearCurrentGrid() {
     while (container.lastChild) {
         container.removeChild(container.lastChild);
-        // makeGrid();
+        gridSizePrompt();
     }
 }
 
-function showGridSizeValue() {
-    gridSizeLabel.textContent = `${gridSizeSlider.value}`;
+function gridSizePrompt() {
+    let gridSize = prompt("Please enter a value between 1-50", "16");
+    if (gridSize == null || gridSize == "") {
+        // please enter a value error message
+        gridSizePrompt()
+    } else if (typeof gridSize !== "number") {
+        // bring up error message saying "please enter a valid/numerical number"
+        gridSizePrompt() //brings up the original prompt
+    } // attach value to grtid size here
 }
-
 
 // <--Event Listeners-->
 gridSizeSlider.addEventListener("input", makeGrid);
