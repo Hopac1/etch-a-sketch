@@ -6,7 +6,6 @@ const clearScreen = document.getElementById("clear");
 let activeClass = document.getElementsByClassName("active");
 
 function makeGrid(size) {
-    // clearCurrentGrid()
     for (j = 0; j < size; j++) {
         for (i = 0; i < size; i++) {
             let div = document.createElement("div");
@@ -16,7 +15,7 @@ function makeGrid(size) {
             container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
             container.appendChild(div);
 
-            blackSquareOnMouseOver(div);
+            randomColourOnMouseOver(div);
 
         }
     } 
@@ -25,7 +24,19 @@ function makeGrid(size) {
 function blackSquareOnMouseOver(currentDiv) {
     currentDiv.addEventListener("mouseover", () => {
         currentDiv.className = "active";
-    })
+    });
+}
+
+// Change hovered div to random colour with each successive hover adding
+// 10% more black.
+function randomColourOnMouseOver(currentDiv) {
+    currentDiv.addEventListener("mouseover", () => {
+        let red = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+        let green = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+        let blue = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+
+        currentDiv.style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+    });
 }
 
 // Replace "active" class with "grid-square" with all elements
@@ -35,20 +46,12 @@ function clearGrid() {
     }
 }
 
-// Remove all div squares to minimize lag when resizing the grid
-function clearCurrentGrid() {
-    while (container.lastChild) {
-        container.removeChild(container.lastChild);
-        gridSizePrompt();
-    }
-}
-
 function gridSizePrompt() {
     let gridSize = parseInt(prompt("Please enter a value between 1-50", "16"));
     console.log(typeof gridSize)
     if (typeof gridSize === "number") {
-        if (gridSize > 50) {
-            alert(`${gridSize} is too big, defaulting to 16x16.`);
+        if (gridSize > 50 || gridSize < 1) {
+            alert(`${gridSize} isn't between 1-50, defaulting to 16x16.`);
             clearGrid();
             makeGrid(16);
         } else {
@@ -56,7 +59,9 @@ function gridSizePrompt() {
             makeGrid(gridSize);
         }
         
-    } 
+    } else {
+        return;
+    }
 }
 
 // <--Event Listeners-->
