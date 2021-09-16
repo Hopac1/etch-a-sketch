@@ -1,7 +1,3 @@
- /* .grid-item {
-    if not working try doing grid box here
- } */
-
  body { 
     background-color: grey;
     display: grid;
@@ -22,7 +18,7 @@
  }
 
  .grid-square {
-    /* background-color: red; */
+    background-color: rgb(196, 196, 196);
     display: inline-block;
     outline: rgb(117, 117, 117) solid 1px;
  }
