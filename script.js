@@ -1,9 +1,9 @@
 const container = document.getElementById("container");
-// const gridSizeSlider = document.getElementById("range");
 const gridSizeButton = document.getElementById("grid-size-btn");
-// const gridSizeLabel = document.getElementById("range-label");
 const clearScreen = document.getElementById("clear");
 let activeClass = document.getElementsByClassName("active");
+
+
 
 function makeGrid(size) {
     for (j = 0; j < size; j++) {
@@ -15,7 +15,7 @@ function makeGrid(size) {
             container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
             container.appendChild(div);
 
-            randomColourOnMouseOver(div);
+            blackSquareOnMouseOver(div);
 
         }
     } 
@@ -31,18 +31,25 @@ function blackSquareOnMouseOver(currentDiv) {
 // 10% more black.
 function randomColourOnMouseOver(currentDiv) {
     currentDiv.addEventListener("mouseover", () => {
-        let red = Math.floor(Math.random() * (255 - 0 + 1) + 0);
-        let green = Math.floor(Math.random() * (255 - 0 + 1) + 0);
-        let blue = Math.floor(Math.random() * (255 - 0 + 1) + 0);
-
-        currentDiv.style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+            // currentDiv.className = "coloured";
+            let red = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+            let green = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+            let blue = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+            currentDiv.style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
     });
 }
 
-// Replace "active" class with "grid-square" with all elements
+function addMoreBlackColour(r, g, b) {
+    r *= 0.1;
+    g *= 0.1;
+    b *= 0.1;
+}
+
+// Replace "active" class with "grid-square" for all elements
 function clearGrid() {
     while (activeClass[0]) {
         activeClass[0].classList.replace("active", "grid-square");
+        // activeClass[0].backgroundColor = "none";
     }
 }
 
