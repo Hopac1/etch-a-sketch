@@ -23,9 +23,9 @@
     outline: rgb(117, 117, 117) solid 1px;
  }
 
-.grid-square:hover {
+/* .grid-square:hover {
    background-color: black;
-}
+} */
 
  .border-container {
     width: 700px;
@@ -33,8 +33,4 @@
     margin: auto;
     background-color: coral;
     border-radius: 10px;
- }
-
- .active {
-    background-color: black;
  }
